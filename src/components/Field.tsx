@@ -1,5 +1,5 @@
 import React from 'react';
-import {View , StyleSheet, Text } from 'react-native';
+import {View , StyleSheet, Text,  TouchableWithoutFeedback } from 'react-native';
 import params from '../params';
 import Mine from './Mine';
 import Flag from './Flag';
@@ -10,9 +10,10 @@ interface FieldProps{
     nearMines?: number,
     exploded?: boolean,
     flagged?: boolean,
+    onOpen: () => void
 }
 
-const Field:React.FC<FieldProps> = ({mined, opened, nearMines, exploded, flagged}) => {
+const Field:React.FC<FieldProps> = ({mined, opened, nearMines, exploded, flagged, onOpen}) => {
     const styleField = [styles.field]
     if(opened) styleField.push(styles.opened);
     if(exploded) styleField.push(styles.exploded)
@@ -32,13 +33,15 @@ const Field:React.FC<FieldProps> = ({mined, opened, nearMines, exploded, flagged
         }
     }
     return (
-        <View style={styleField}>
-            {!mined && opened && nearMines > 0 ? (
-                <Text style={[styles.label, {color: color}]}>{nearMines}</Text>
-            ) : false}
-            {opened && exploded ? <Mine/> : false}
-            {!opened && flagged ? <Flag/> : false}
-        </View>
+        <TouchableWithoutFeedback onPress={onOpen}>
+            <View style={styleField}>
+                {!mined && opened && nearMines > 0 ? (
+                    <Text style={[styles.label, {color: color}]}>{nearMines}</Text>
+                    ) : false}
+                {opened && exploded ? <Mine/> : false}
+                {!opened && flagged ? <Flag/> : false}
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
