@@ -93,3 +93,12 @@ export const wonGame = (board: any) => fields(board).filter(pendding).length ===
 
 export const showMines = (board: any) => fields(board).filter(field  => field.mined). forEach(field => field.opened = true)
 
+export const invertFlag = (board: any, row: number, column: number) => {
+    const field = board[row][column]
+    field.flagged = !field.flagged
+}
+
+export const flagsUsed = (board: any) => fields(board).filter(field => field.flagged).length
+
+
+

@@ -5,13 +5,15 @@ import Field from './Field';
 interface MineFieldProps{
     board: any,
     onOpenField: (row: number, column: number) => void
+    onSelectField: (row: number, column: number) => void
 }
 
-const MineField:React.FC<MineFieldProps> = ({board, onOpenField}) => {
+const MineField:React.FC<MineFieldProps> = ({board, onOpenField, onSelectField}) => {
     const rows = board.map((row, r) => {
         const columns = row.map((field, c) => {
             return <Field {...field} key={c}
-            onOpen={() => onOpenField(r, c)}/>
+            onOpen={() => onOpenField(r, c)}
+            onSelect={() => onSelectField(r, c)}/>
         })
         return <View style={{flexDirection: "row"}} key={r}>{columns}</View>
     })

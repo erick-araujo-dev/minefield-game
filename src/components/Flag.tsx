@@ -17,37 +17,37 @@ const Flag:React.FC<FlagProps> = ({bigger}) => {
 
 const style = StyleSheet.create({
     container: {
-        marginTop: 2,
+        marginTop: 5,
     },
     flag:{
         position: "absolute",
-        height: 5,
-        width: 6,
+        height: 10,
+        width: 12,
         backgroundColor: "#F22",
-        marginLeft: 3
+        marginLeft: 6
     },
     flagPole:{
         position: "absolute",
-        height: 12,
-        width: 2,
+        height: 24,
+        width: 4,
         backgroundColor: "#222",
-        marginLeft: 9
+        marginLeft: 18
     },
     base1:{
         position: "absolute",
-        height: 2,
-        width: 6,
+        height: 4,
+        width: 12,
         backgroundColor: "#222",
-        marginLeft: 7,
-        marginTop: 10,
+        marginLeft: 14,
+        marginTop: 20,
     },
     base2:{
         position: "absolute",
-        height: 2,
-        width: 10,
+        height: 4,
+        width: 20,
         backgroundColor: "#222",
-        marginLeft: 5,
-        marginTop: 12,
+        marginLeft: 10,
+        marginTop: 24,
     },  
     flagpoleBigger: {
         height: 28,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View , StyleSheet, Text,  TouchableWithoutFeedback } from 'react-native';
-import params from '../params';
+import params from '../constants/params';
 import Mine from './Mine';
 import Flag from './Flag';
 
@@ -10,10 +10,11 @@ interface FieldProps{
     nearMines?: number,
     exploded?: boolean,
     flagged?: boolean,
-    onOpen: () => void
+    onOpen: () => void,
+    onSelect: () => void,
 }
 
-const Field:React.FC<FieldProps> = ({mined, opened, nearMines, exploded, flagged, onOpen}) => {
+const Field:React.FC<FieldProps> = ({mined, opened, nearMines, exploded, flagged, onOpen, onSelect}) => {
     const styleField = [styles.field]
     if(opened) styleField.push(styles.opened);
     if(exploded) styleField.push(styles.exploded)
@@ -33,12 +34,13 @@ const Field:React.FC<FieldProps> = ({mined, opened, nearMines, exploded, flagged
         }
     }
     return (
-        <TouchableWithoutFeedback onPress={onOpen}>
+        <TouchableWithoutFeedback onPress={onOpen}
+        onLongPress={onSelect}>
             <View style={styleField}>
                 {!mined && opened && nearMines > 0 ? (
                     <Text style={[styles.label, {color: color}]}>{nearMines}</Text>
                     ) : false}
-                {opened && exploded ? <Mine/> : false}
+                {mined && opened ? <Mine/> : false}
                 {!opened && flagged ? <Flag/> : false}
             </View>
         </TouchableWithoutFeedback>
@@ -69,7 +71,8 @@ const styles = StyleSheet.create({
         fontSize: params.fontSize,
     },
     exploded:{
-        backgroundColor: "red"
+        backgroundColor: "red",
+        borderColor: "brown"
     }
 
 })
