@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { levelEnum } from '../constants/levelEnum';
+import params from '../constants/params';
   
   interface ButtonChangeLevelProps {
     level: levelEnum;
@@ -35,6 +36,13 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 10,
         padding: 5,
+       
+        width: params.blockSize * 2,
+        height: params.blockSize,
+        borderWidth: params.borderSize,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row'
     },
     buttonLabel: {
         fontSize: 20,
@@ -42,13 +50,25 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     bgEasy: {
-        backgroundColor: '#49b65d'
+        backgroundColor: '#49b65d',
+        borderBottomColor: "#2F4F4F",
+        borderRightColor: "#2F4F4F",
+        borderLeftColor: "#8FCC8F",
+        borderTopColor: "#8FCC8F",
     },
     bgNormal: {
-        backgroundColor: '#2765F7'
+        backgroundColor: '#2765F7',
+        borderBottomColor: "#191970",
+        borderRightColor: "#191970",
+        borderLeftColor: "#6495ED",
+        borderTopColor: "#6495ED",
     },
     bgHard: {
-        backgroundColor: '#F26337'
+        backgroundColor: '#F26337',
+        borderBottomColor: "#800000",
+        borderRightColor: "#800000",
+        borderLeftColor: "#FFA07A",
+        borderTopColor: "#FFA07A",
     }
 })
 
